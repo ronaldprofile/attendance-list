@@ -1,11 +1,12 @@
-export function Input() {
+export function Input({ studentName, setStudentName }) {
   return (
     <input
       type="text"
       id="name"
       placeholder="Dígite o nome"
       name="name"
-      required
+      value={studentName}
+      onChange={e => setStudentName(e.target.value)}
       className={`
         h-[50px] w-full px-3 rounded bg-slate-200
         outline-none
