@@ -1,12 +1,11 @@
-export function Input({ studentName, setStudentName }) {
+import { InputHTMLAttributes } from "react";
+
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {};
+
+export function Input({ ...props }: InputProps) {
   return (
     <input
-      type="text"
-      id="name"
-      placeholder="Dígite o nome"
-      name="name"
-      value={studentName}
-      onChange={e => setStudentName(e.target.value)}
+      {...props}
       className={`
         h-[50px] w-full px-3 rounded bg-slate-200
         outline-none

@@ -1,4 +1,9 @@
-export function Card({ name, time }) {
+type CardProps = {
+  name: string;
+  time: string;
+};
+
+export function Card({ name, time }: CardProps) {
   return (
     <div
       className={`

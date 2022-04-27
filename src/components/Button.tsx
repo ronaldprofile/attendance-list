@@ -1,6 +1,13 @@
-export function Button({ children }) {
+import { ButtonHTMLAttributes, ReactNode } from "react";
+
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  children: ReactNode;
+};
+
+export function Button({ children, ...props }: ButtonProps) {
   return (
     <button
+      {...props}
       type="submit"
       className={`
         h-[50px] px-4

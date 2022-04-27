@@ -1,14 +1,24 @@
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { Button } from "../components/Button";
 import { Card } from "../components/Card";
 import { Input } from "../components/Input";
 import { Title } from "../components/Title";
 
+type Student = {
+  name: string;
+  time: string;
+};
+
+type UserGithub = {
+  name: string;
+  avatar_url: string;
+};
+
 export function Home() {
   const [studentName, setStudentName] = useState("");
-  const [students, setStudents] = useState([]);
-  const [userGithub, setUserGithub] = useState({ name: "", avatar_url: "" });
+  const [students, setStudents] = useState<Student[]>([]);
+  const [userGithub, setUserGithub] = useState<UserGithub | null>(null);
   const usernameGithub = "ronaldprofile";
 
   function handleAddStudent() {
@@ -26,7 +36,7 @@ export function Home() {
     setStudentName("");
   }
 
-  async function handleSubmitForm(event) {
+  async function handleSubmitForm(event: FormEvent) {
     event.preventDefault();
 
     if (!studentName.trim()) {
@@ -46,7 +56,7 @@ export function Home() {
 
       try {
         const response = await fetch(url);
-        const data = await response.json();
+        const data: UserGithub = await response.json();
 
         setUserGithub({
           name: data.name,
@@ -67,12 +77,12 @@ export function Home() {
           <Title>Lista de presença</Title>
 
           <div className={`flex items-center gap-2`}>
-            <strong>{userGithub.name}</strong>
+            <strong>{userGithub?.name}</strong>
 
             <div className={`p-[2px] border-2 border-purple-500 rounded-full`}>
               <img
-                src={userGithub.avatar_url}
-                alt={`Foto do ${userGithub.name}`}
+                src={userGithub?.avatar_url}
+                alt={`Foto do ${userGithub?.name}`}
                 className={`w-16 h-16 rounded-full cursor-pointer`}
               />
             </div>
@@ -85,8 +95,15 @@ export function Home() {
               Dígite o nome
             </label>
 
-            <Input setStudentName={setStudentName} studentName={studentName} />
-            <Button>Adicionar</Button>
+            <Input
+              name="name"
+              id="name"
+              placeholder="Digite o nome"
+              value={studentName}
+              onChange={e => setStudentName(e.target.value)}
+            />
+
+            <Button type="submit">Adicionar</Button>
           </div>
         </form>
 
