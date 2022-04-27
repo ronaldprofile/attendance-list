@@ -101,9 +101,15 @@ export function Home() {
               placeholder="Digite o nome"
               value={studentName}
               onChange={e => setStudentName(e.target.value)}
+              className={`bg-gray-800 focus:border-purple-500`}
             />
 
-            <Button type="submit">Adicionar</Button>
+            <Button
+              type="submit"
+              className={`bg-purple-600 hover:bg-purple-700 text-white`}
+            >
+              Adicionar
+            </Button>
           </div>
         </form>
 
