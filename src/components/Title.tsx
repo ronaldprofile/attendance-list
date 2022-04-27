@@ -1,3 +1,11 @@
-export function Title({ children }) {
-  return <h2 className={`text-left text-2xl`}>{children}</h2>;
+import { ReactNode } from "react";
+import clsx from "clsx";
+
+type TitleProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+export function Title({ children, className }: TitleProps) {
+  return <h2 className={clsx(`text-left text-2xl`, className)}>{children}</h2>;
 }

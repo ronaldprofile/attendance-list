@@ -1,23 +1,26 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
+import clsx from "clsx";
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
+  className?: string;
 };
 
-export function Button({ children, ...props }: ButtonProps) {
+export function Button({ children, className, ...props }: ButtonProps) {
   return (
     <button
       {...props}
       type="submit"
-      className={`
-        h-[50px] px-4
-      bg-purple-500 text-white
-        font-bold uppercase text-sm
-        rounded-tr-sm
-        rounded-br-sm
-        transition
-      hover:bg-purple-600
-    `}
+      className={clsx(
+        `
+          h-[50px] px-4
+          font-bold uppercase text-sm
+          rounded-tr-sm
+          rounded-br-sm
+          transition ease-linear
+      `,
+        className
+      )}
     >
       {children}
     </button>
