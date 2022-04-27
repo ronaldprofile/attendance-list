@@ -7,14 +7,12 @@ os conceitos: componentes, estado e propriedades do React na prática.
 
 Abaixo segue uma demonstração do projeto
 
-
 https://user-images.githubusercontent.com/81709922/162961954-70074250-ec21-403c-a2cc-9ec8d9a08af3.mp4
-
-
 
 ## Techs
 
 - React JS.
+- Typescript.
 - Tailwind CSS.
 
 ## Uso
