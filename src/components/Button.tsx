@@ -10,7 +10,6 @@ export function Button({ children, className, ...props }: ButtonProps) {
   return (
     <button
       {...props}
-      type="submit"
       className={clsx(
         `
           h-[50px] px-4
